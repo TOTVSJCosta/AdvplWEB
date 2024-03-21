@@ -1,0 +1,31 @@
+#INCLUDE "TOTVS.CH"
+#INCLUDE "APWEBEX.CH"
+         
+
+User Function AdvplWEB()
+    local jRetorno := jsonObject():New()
+    local cJSON := ""
+
+    RPCSetEnv("99", "01")
+
+    if select("awebE") > 0
+        awebE->(dbCloseArea())
+    endif
+    //BEGINSQL ALIAS "awebE"
+
+    //ENDSQL
+
+    jRetorno["codigo"] := "000000001"
+    jRetorno["descricao"] := "Produto 000000001"
+    jRetorno["um"] := "PC"
+    jRetorno["arm_padrao"] := "01"
+    jRetorno["data_cusStd"] := date()
+    jRetorno["fiscal"] := {jsonObject():New()}
+    jRetorno["fiscal"][1]["ncm"] := "851590000"
+    jRetorno["fiscal"][1]["aliq_ipi"] := 15
+
+    cJSON := jRetorno:toJSON()
+    freeObj(jRetorno)
+
+    RPCClearEnv()
+return cJSON
