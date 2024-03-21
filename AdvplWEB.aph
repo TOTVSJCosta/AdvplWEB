@@ -1,0 +1,17 @@
+<HTML>
+    <%
+        local cText := "teste"
+        local nI := 1
+    %>
+    <HEAD>
+        <TITLE>Adpl WEB</TITLE>
+    </HEAD>
+    <BODY>
+        <h1>Linha</h1>
+        <h2>Data: <%= Date() %> Hora: <%= Time() %></h2>
+        <%
+            for nI := 1 to 5 %>
+                <p>Linha <%= strZero(nI,3) %></p>
+        <%  next nI %>
+    </BODY>
+</HTML>
